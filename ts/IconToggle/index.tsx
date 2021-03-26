@@ -1,6 +1,6 @@
 import {MDCIconToggle} from '@material/icon-toggle/';
 import {bind} from 'bind-decorator';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 
 interface IIconToggleData {
@@ -44,6 +44,7 @@ export class IconToggle extends MaterialComponent<
   @bind
   protected onChange(e) {
     if (this.props.onChange) {
+      // @ts-ignore
       this.props.onChange(e);
     }
   }

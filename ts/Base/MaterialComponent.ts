@@ -1,7 +1,7 @@
 import MDCComponent from '@material/base/component';
 import {MDCRipple} from '@material/ripple';
 import {bind} from 'bind-decorator';
-import {Component, VNode} from 'preact';
+import {Component, VNode, JSX} from 'preact';
 import {SoftMerge} from './types';
 
 export interface IMaterialComponentOwnProps {
@@ -76,18 +76,10 @@ export abstract class MaterialComponent<
     }
 
     const element = this.materialDom(componentProps);
-    let propName = 'attributes';
-
-    if ('props' in element) {
-      propName = 'props';
-      // @ts-ignore
-      element.props = element.props || {};
-    } else {
-      element.attributes = element.attributes || {};
-    }
+    element.props = element.props || {};
 
     // @ts-ignore
-    element[propName].className = `${userDefinedClasses} ${this.getClassName(
+    element[propName].class = `${userDefinedClasses} ${this.getClassName(
       element
     )}`
       .split(' ')
@@ -148,8 +140,8 @@ export abstract class MaterialComponent<
 
   // Shared setter for the root element ref
   @bind
-  protected setControlRef(control?: Element) {
-    this.control = control;
+  protected setControlRef(control: Element | null) {
+    this.control = control || undefined;
   }
 
   /** Build the className based on component names and mdc props */
@@ -173,22 +165,13 @@ export abstract class MaterialComponent<
   }
 
   /** Returns the class name for element */
-  protected getClassName(element: VNode) {
+  protected getClassName(element: VNode<JSX.HTMLAttributes>) {
     if (!element) {
       return '';
     }
-    let propName = 'attributes';
-
-    if ('props' in element) {
-      propName = 'props';
-      // @ts-ignore
-      element.props = element.props || {};
-    } else {
-      element.attributes = element.attributes || {};
-    }
 
     // @ts-ignore
-    const attrs = (element[propName] = element[propName] || {});
+    const attrs = element.props || {};
     let classText = this.classText;
     if (attrs.class) {
       classText += ' ' + attrs.class;

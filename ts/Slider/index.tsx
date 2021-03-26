@@ -1,6 +1,6 @@
 import {MDCSlider} from '@material/slider';
 import {bind} from 'bind-decorator';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 
 export interface ISliderProps {
@@ -11,8 +11,8 @@ export interface ISliderProps {
   max?: number;
   step?: number;
 
-  onInput?: JSX.GenericEventHandler;
-  onChange?: JSX.GenericEventHandler;
+  onInput?: JSX.GenericEventHandler<any>;
+  onChange?: JSX.GenericEventHandler<any>;
 }
 
 export interface ISliderState {}

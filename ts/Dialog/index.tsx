@@ -1,6 +1,6 @@
 import {MDCDialog} from '@material/dialog/';
 import {bind} from 'bind-decorator';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 import {Button} from '../Button';
 
@@ -86,8 +86,8 @@ export class DialogFooterButton extends Button<
 }
 
 export interface IDialogProps extends JSX.HTMLAttributes {
-  onAccept?: JSX.GenericEventHandler;
-  onCancel?: JSX.GenericEventHandler;
+  onAccept?: JSX.GenericEventHandler<any>;
+  onCancel?: JSX.GenericEventHandler<any>;
 }
 
 export interface IDialogState {}

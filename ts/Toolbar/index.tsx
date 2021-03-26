@@ -1,6 +1,6 @@
 import {MDCToolbar} from '@material/toolbar';
 import {bind} from 'bind-decorator';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 
 export interface IToolbarRowProps {}
@@ -127,6 +127,7 @@ export class Toolbar extends MaterialComponent<IToolbarProps, IToolbarState> {
   @bind
   protected onChange(e) {
     if (this.props.onChange) {
+      // @ts-ignore
       this.props.onChange(e);
     }
   }

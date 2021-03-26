@@ -1,6 +1,6 @@
 import {MDCDrawer} from '@material/drawer';
 import {bind} from 'bind-decorator';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 import {ListLinkItem} from '../List';
 
@@ -77,8 +77,8 @@ export class DrawerItem extends ListLinkItem<
 }
 
 export interface IDrawerProps extends JSX.HTMLAttributes {
-  onAccept?: JSX.GenericEventHandler;
-  onCancel?: JSX.GenericEventHandler;
+  onAccept?: JSX.GenericEventHandler<any>;
+  onCancel?: JSX.GenericEventHandler<any>;
   dismissible?: boolean;
   modal?: boolean;
 }

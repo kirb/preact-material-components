@@ -1,11 +1,11 @@
 import {MDCCheckbox} from '@material/checkbox/';
-import {h} from 'preact';
+import {h, JSX} from 'preact';
 import MaterialComponent from '../Base/MaterialComponent';
 
 export interface ICheckboxProps {
   indeterminate?: boolean;
   disabled?: boolean;
-  onChange?: JSX.GenericEventHandler;
+  onChange?: JSX.GenericEventHandler<any>;
   checked?: boolean;
 }
 
