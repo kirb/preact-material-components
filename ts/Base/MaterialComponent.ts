@@ -79,7 +79,7 @@ export abstract class MaterialComponent<
     element.props = element.props || {};
 
     // @ts-ignore
-    element[propName].class = `${userDefinedClasses} ${this.getClassName(
+    element.props.class = `${userDefinedClasses} ${this.getClassName(
       element
     )}`
       .split(' ')
@@ -94,7 +94,7 @@ export abstract class MaterialComponent<
         return;
       }
       // @ts-ignore
-      delete element[propName][prop];
+      delete element.props[prop];
     });
     return element;
   }
