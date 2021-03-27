@@ -1,11 +1,19 @@
 /*globals require, __dirname, module*/
 const cp = require('cp');
-const globCopy = require('glob-copy');
+const glob = require('globby');
 const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const bundleMapping = require('./componentsList');
 const srcPath = path.join(__dirname, 'node_modules', '@material');
+
+const cpGlobSync = (pattern, destFolder) => {
+  let files = glob.sync(pattern);
+  files.forEach(function(filename) {
+    var out = fs.createWriteStream(path.join(destFolder, path.basename(filename)));
+    fs.createReadStream(filename).pipe(out);
+  });
+};
 
 class CssMigrationWebpackPlugin {
   copySuperCss() {
@@ -30,7 +38,7 @@ class CssMigrationWebpackPlugin {
       fs.unlinkSync(destCssFilePath);
     }
     cp.sync(sourceCssPath, destCssFilePath);
-    globCopy.sync(sourceScssPath, destScssFilePath);
+    cpGlobSync(sourceScssPath, destScssFilePath);
   }
   copyIndividualCss(component, destFolder) {
     const sourcePath = path.join(srcPath, component);
@@ -49,7 +57,7 @@ class CssMigrationWebpackPlugin {
 
     //copy new file
     cp.sync(sourceCssPath, destCssFilePath);
-    globCopy.sync(sourceScssPath, destScssFilePath);
+    cpGlobSync(sourceScssPath, destScssFilePath);
 
     //get nested folders with .scss files
     const isDirectory = source => fs.lstatSync(source).isDirectory();
@@ -80,11 +88,11 @@ class CssMigrationWebpackPlugin {
       const destSubFolder = path.join(destFolder, subdir);
       const srcSubPath = path.join(sourcePath, subdir, '*.scss');
       if (!fs.existsSync(destSubFolder)) fs.mkdirSync(destSubFolder);
-      globCopy.sync(srcSubPath, destSubFolder);
+      cpGlobSync(srcSubPath, destSubFolder);
     });
   }
   apply(compiler) {
-    compiler.plugin('after-emit', (compilation, callback) => {
+    compiler.hooks.emit.tapAsync('CssMigrationWebpackPlugin', (compilation, callback) => {
       for (let dest in bundleMapping) {
         if (bundleMapping.hasOwnProperty(dest)) {
           const source = bundleMapping[dest];
