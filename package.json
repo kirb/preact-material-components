@@ -1,5 +1,5 @@
 {
-  "name": "preact-material-components",
+  "name": "@kirb/preact-material-components",
   "version": "1.6.1",
   "description": "preact wrapper for \"Material Components for the web\"",
   "module": "index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prateekbh/preact-material-components.git"
+    "url": "git+https://github.com/kirb/preact-material-components.git"
   },
   "keywords": [
     "preact",
