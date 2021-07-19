@@ -110,7 +110,7 @@ export class Select extends MaterialComponent<ISelectProps, ISelectState> {
         {props.hintText && (
           <div
             class="mdc-floating-label"
-            ref={ref => {
+            ref={(ref) => {
               this.labelRef = ref || undefined;
             }}>
             {props.hintText}

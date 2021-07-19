@@ -105,7 +105,7 @@ export class Toolbar extends MaterialComponent<IToolbarProps, IToolbarState> {
     'fixed-lastrow-only',
     'waterfall',
     'flexible',
-    'flexible-default-behavior'
+    'flexible-default-behavior',
   ];
 
   public componentDidMount() {

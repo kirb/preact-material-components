@@ -46,7 +46,7 @@ export class LayoutGridCell extends MaterialComponent<
     desktop: 'desktopCols',
     order: 'order',
     phone: 'phoneCols',
-    tablet: 'tabletCols'
+    tablet: 'tabletCols',
   };
 
   protected static createClassName(props) {
@@ -97,7 +97,7 @@ export class LayoutGridCell extends MaterialComponent<
     const element = super.render(props);
     // remove the extra attributes used for customising this element - keep the DOM clean
     Object.keys(LayoutGridCell.propsDict).forEach(
-      key =>
+      (key) =>
         // @ts-ignore
         delete (element.props || element.attributes)[
           LayoutGridCell.propsDict[key]

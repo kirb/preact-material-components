@@ -24,7 +24,7 @@ export class Fab extends MaterialComponent<IFabProps, IFabState> {
 
   protected materialDom(props) {
     const classNames: string[] = [];
-    this.themeProps.forEach(themeProp => {
+    this.themeProps.forEach((themeProp) => {
       if (themeProp in props && props[themeProp] !== false) {
         classNames.push(generateThemeClass(themeProp));
       }

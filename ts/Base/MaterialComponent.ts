@@ -1,7 +1,7 @@
 import MDCComponent from '@material/base/component';
 import {MDCRipple} from '@material/ripple';
 import {bind} from 'bind-decorator';
-import {Component, VNode, JSX} from 'preact';
+import {Component, JSX, VNode} from 'preact';
 import {SoftMerge} from './types';
 
 export interface IMaterialComponentOwnProps {
@@ -79,16 +79,14 @@ export abstract class MaterialComponent<
     element.props = element.props || {};
 
     // @ts-ignore
-    element.props.class = `${userDefinedClasses} ${this.getClassName(
-      element
-    )}`
+    element.props.class = `${userDefinedClasses} ${this.getClassName(element)}`
       .split(' ')
       .filter(
         (value, index, self) => self.indexOf(value) === index && value !== ''
       ) // Unique + exclude empty class names
       .join(' ');
     // Clean this shit of proxy attributes
-    this.mdcProps.forEach(prop => {
+    this.mdcProps.forEach((prop) => {
       // TODO: Fix this better
       if (prop in doNotRemoveProps) {
         return;

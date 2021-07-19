@@ -45,7 +45,7 @@ export class Menu extends MaterialComponent<IMenuProps, IMenuState> {
     'open-from-top-left',
     'open-from-top-right',
     'open-from-bottom-left',
-    'open-from-bottom-right'
+    'open-from-bottom-right',
   ];
   protected mdcNotifyProps = ['open'];
 

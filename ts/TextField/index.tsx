@@ -1,7 +1,7 @@
 import {MDCTextField} from '@material/textfield';
 import {Component, h, JSX} from 'preact';
 import MaterialComponent, {
-  MaterialComponentProps
+  MaterialComponentProps,
 } from '../Base/MaterialComponent';
 import {SoftMerge} from '../Base/types';
 import Icon from '../Icon';
@@ -67,11 +67,11 @@ export class TextFieldInput extends MaterialComponent<
   ITextFieldInputState
 > {
   public static readonly defaultProps = {
-    valid: true
+    valid: true,
   };
 
   public state = {
-    jsComponentAttached: false
+    jsComponentAttached: false,
   };
   public MDComponent?: MDCTextField;
 
@@ -82,7 +82,7 @@ export class TextFieldInput extends MaterialComponent<
     'dense',
     'disabled',
     'box',
-    'outlined'
+    'outlined',
   ];
 
   protected mdcNotifyProps = ['valid', 'disabled'];
@@ -91,7 +91,7 @@ export class TextFieldInput extends MaterialComponent<
     super.componentDidMount();
     this.setState(
       {
-        jsComponentAttached: true
+        jsComponentAttached: true,
       },
       () => {
         if (this.control) {
@@ -266,7 +266,7 @@ export class TextField extends Component<ITextFieldProps, ITextFieldState> {
 
   public componentDidMount() {
     this.setState({
-      jsComponentAttached: true
+      jsComponentAttached: true,
     });
   }
 
@@ -287,14 +287,14 @@ export class TextField extends Component<ITextFieldProps, ITextFieldState> {
     // Helper text
     const helperTextProps = {
       persistent: helperTextPersistent,
-      'validation-msg': helperTextValidationMsg
+      'validation-msg': helperTextValidationMsg,
     };
 
     return showDiv ? (
       <div className={className} style={outerStyle}>
         <TextFieldInput
           {...props}
-          onInit={MDComponent => {
+          onInit={(MDComponent) => {
             this.MDComponent = MDComponent;
           }}
           aria-controls={props.helperText && `${props.id}-helper-text`}
@@ -310,7 +310,7 @@ export class TextField extends Component<ITextFieldProps, ITextFieldState> {
         {...props}
         className={className}
         outerStyle={outerStyle}
-        onInit={MDComponent => {
+        onInit={(MDComponent) => {
           this.MDComponent = MDComponent;
         }}
       />

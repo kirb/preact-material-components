@@ -156,7 +156,7 @@ export class GridList extends MaterialComponent<
 > {
   protected static validationValuesByKey = {
     'tile-aspect': ['1x1', '16x9', '2x3', '3x2', '4x3', '3x4'],
-    'with-icon-align': ['start', 'end']
+    'with-icon-align': ['start', 'end'],
   };
 
   protected componentName = 'grid-list';
@@ -165,7 +165,7 @@ export class GridList extends MaterialComponent<
   protected isValidValue(validationValues, testValue) {
     return (
       validationValues &&
-      validationValues.findIndex(val => val === testValue) >= 0
+      validationValues.findIndex((val) => val === testValue) >= 0
     );
   }
 
@@ -180,7 +180,7 @@ export class GridList extends MaterialComponent<
 
   protected materialDom(props) {
     const className = Object.keys(GridList.validationValuesByKey)
-      .map(key => {
+      .map((key) => {
         return this.mapClassName(key, props);
       })
       .filter(notEmptyString)

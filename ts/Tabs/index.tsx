@@ -7,7 +7,7 @@ import MaterialComponent from '../Base/MaterialComponent';
  * Default props for tabs
  */
 const defaultProps = {
-  activeTabIndex: 0
+  activeTabIndex: 0,
 };
 
 export interface ITabBarScrollerProps {

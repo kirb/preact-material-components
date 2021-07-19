@@ -34,7 +34,7 @@ export class Button<
   protected materialDom(props) {
     const ButtonElement = props.href ? 'a' : 'button';
     let className = '';
-    this.themeProps.forEach(themeProp => {
+    this.themeProps.forEach((themeProp) => {
       if (themeProp in props && props[themeProp] !== false) {
         className += generateThemeClass(themeProp) + ' ';
       }
